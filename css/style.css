@@ -1,0 +1,162 @@
+/* --- BRAND COLOR PALETTE & GLOBAL STYLES --- */
+:root {
+    --adees-purple: #8A2BE2;        /* Main purple brand accent */
+    --adees-purple-dark: #5c1b99;   /* Hover state purple */
+    --adees-purple-light: #f4ecfc;  /* Soft purple accent background */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Primary Button Customization */
+.btn-primary {
+    background-color: var(--adees-purple);
+    border-color: var(--adees-purple);
+}
+.btn-primary:hover {
+    background-color: var(--adees-purple-dark);
+    border-color: var(--adees-purple-dark);
+}
+
+.btn-outline-primary {
+    color: var(--adees-purple);
+    border-color: var(--adees-purple);
+}
+.btn-outline-primary:hover {
+    background-color: var(--adees-purple);
+    border-color: var(--adees-purple);
+}
+
+/* --- ANNOUNCEMENT BAR CAROUSEL --- */
+.announcement-bar {
+    background-color: var(--adees-purple-light);
+    color: var(--adees-purple-dark);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+[data-bs-theme="dark"] .announcement-bar {
+    background-color: #2b1140;
+    color: #d8b4fe;
+}
+
+/* --- NAVBAR & LOGO STYLING --- */
+.navbar-brand img {
+    max-height: 65px; /* Adjust height based on your logo design */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+.navbar-brand img:hover {
+    transform: scale(1.03);
+}
+
+/* Dark mode logo filter (optional adjustment if your logo has dark text) */
+[data-bs-theme="dark"] .navbar-brand img {
+    filter: brightness(1.1);
+}
+
+/* --- HOVER DROPDOWNS (DESKTOP ONLY) --- */
+/* Only enable hover menus on large screens (min-width: 992px) to prevent mobile touch glitches */
+@media (min-width: 992px) {
+    .navbar .nav-item.dropdown:hover > .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Remove gap so mouse transition is seamless */
+        animation: fadeIn 0.2s ease-in-out;
+    }
+}
+
+/* Smooth fade-in animation for dropdown menus */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- HERO CAROUSEL --- */
+.hero-carousel .carousel-item {
+    height: 75vh;
+    min-height: 450px;
+    background-color: #000;
+}
+.hero-carousel img {
+    object-fit: cover;
+    height: 100%;
+    opacity: 0.85; /* Slightly dim image so white text pops */
+}
+.hero-caption {
+    bottom: 25%;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+/* --- CATEGORY CARDS (HOVER EFFECT) --- */
+.category-card {
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+}
+.category-card img {
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    width: 100%;
+    height: 380px;
+}
+.category-card:hover img {
+    transform: scale(1.05); /* Smooth zoom-in on hover */
+}
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+}
+
+/* --- PRODUCT IMAGE THUMBNAILS --- */
+.product-main-img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.thumb-img {
+    height: 90px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.thumb-img:hover, .thumb-img.active {
+    opacity: 1;
+    border: 2px solid var(--adees-purple) !important;
+}
+
+/* --- INSTAGRAM GRID --- */
+.insta-grid img {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+}
+.insta-grid img:hover {
+    opacity: 0.85;
+}
+
+/* --- BRAND LOGOS BANNER --- */
+.brand-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+.brand-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}

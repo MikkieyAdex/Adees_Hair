@@ -1,117 +1,153 @@
-// 1. DARK MODE TOGGLE
+// ==========================================
+// 1. DARK MODE TOGGLE & TOAST
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('darkModeToggle');
     const htmlElement = document.documentElement;
-    const icon = toggleBtn.querySelector('i');
 
-    // Helper function to apply a specific theme to Bootstrap 5.3
-    function applyTheme(theme) {
-        htmlElement.setAttribute('data-bs-theme', theme);
-        
-        if (theme === 'dark') {
-            icon.classList.replace('bi-moon-stars', 'bi-sun');
-            toggleBtn.classList.replace('btn-outline-secondary', 'btn-outline-light');
+    if (toggleBtn) {
+        const icon = toggleBtn.querySelector('i');
+
+        function applyTheme(theme) {
+            htmlElement.setAttribute('data-bs-theme', theme);
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.classList.replace('bi-moon-stars', 'bi-sun');
+                    toggleBtn.classList.replace('btn-outline-secondary', 'btn-outline-light');
+                } else {
+                    icon.classList.replace('bi-sun', 'bi-moon-stars');
+                    toggleBtn.classList.replace('btn-outline-light', 'btn-outline-secondary');
+                }
+            }
+        }
+
+        const savedTheme = localStorage.getItem('user-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            applyTheme(savedTheme);
         } else {
-            icon.classList.replace('bi-sun', 'bi-moon-stars');
-            toggleBtn.classList.replace('btn-outline-light', 'btn-outline-secondary');
+            applyTheme(systemPrefersDark ? 'dark' : 'light');
         }
-    }
 
-    // DETECT SYSTEM PREFERENCE OR SAVED PREFERENCE
-    const savedTheme = localStorage.getItem('user-theme');
-    
-    // Check if system OS prefers dark mode
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme) {
-        // Use user's previously chosen theme if available
-        applyTheme(savedTheme);
-    } else {
-        // Otherwise, fall back to the user's system setting
-        const initialTheme = systemPrefersDark ? 'dark' : 'light';
-        applyTheme(initialTheme);
-    }
-
-    // MANUAL TOGGLE CLICK HANDLER
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-bs-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        applyTheme(newTheme);
-        
-        // Save choice in browser storage so it persists across page reloads
-        localStorage.setItem('user-theme', newTheme);
-    });
-
-    // LISTEN FOR SYSTEM THEME CHANGES IN REAL-TIME
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        // Only automatically update if user hasn't manually set a preference
-        if (!localStorage.getItem('user-theme')) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-
-    // DISPLAY THE TEMPORARY PROMPT (TOAST)
-    const toastElement = document.getElementById('themeToast');
-    if (toastElement) {
-        const themeToast = new bootstrap.Toast(toastElement, {
-            delay: 5000 // Displays for 5 seconds, then automatically hides
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('user-theme', newTheme);
         });
-        
-        // Show the prompt shortly after the page finishes loading
-        setTimeout(() => {
-            themeToast.show();
-        }, 1000); // 1 second delay after load
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('user-theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+
+    // Toast Notification
+    const toastElement = document.getElementById('themeToast');
+    if (toastElement && typeof bootstrap !== 'undefined') {
+        const themeToast = new bootstrap.Toast(toastElement, { delay: 5000 });
+        setTimeout(() => { themeToast.show(); }, 1000);
     }
 });
 
+
+// ==========================================
 // 2. SEARCH OVERLAY CONTROLLER
-const openSearchBtn = document.getElementById('openSearchBtn');
-const closeSearchBtn = document.getElementById('closeSearchBtn');
-const searchOverlay = document.getElementById('searchOverlay');
-const searchBackdrop = document.getElementById('searchBackdrop');
-const searchInput = document.getElementById('searchInput');
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const openSearchBtn = document.getElementById('openSearchBtn');
+    const closeSearchBtn = document.getElementById('closeSearchBtn');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchBackdrop = document.getElementById('searchBackdrop');
+    const searchInput = document.getElementById('searchInput');
 
-// Function to Open Search Overlay
-function openSearch() {
-    searchOverlay.classList.add('active');
-    searchBackdrop.classList.add('active');
-    // Automatically focus the input cursor for immediate typing
-    setTimeout(() => searchInput.focus(), 300);
-}
+    // ONLY add event listeners if search elements actually exist on the current page!
+    if (openSearchBtn && searchOverlay && searchBackdrop) {
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            searchBackdrop.classList.add('active');
+            if (searchInput) setTimeout(() => searchInput.focus(), 300);
+        }
 
-// Function to Close Search Overlay
-function closeSearch() {
-    searchOverlay.classList.remove('active');
-    searchBackdrop.classList.remove('active');
-    searchInput.value = ''; // Clears search field on close
-}
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            searchBackdrop.classList.remove('active');
+            if (searchInput) searchInput.value = '';
+        }
 
-// Event Listeners
-openSearchBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openSearch();
-});
+        openSearchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openSearch();
+        });
 
-closeSearchBtn.addEventListener('click', closeSearch);
-searchBackdrop.addEventListener('click', closeSearch);
+        if (closeSearchBtn) closeSearchBtn.addEventListener('click', closeSearch);
+        searchBackdrop.addEventListener('click', closeSearch);
 
-// Close overlay when pressing the Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-        closeSearch();
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                closeSearch();
+            }
+        });
     }
 });
 
+
+// ==========================================
 // 3. PRODUCT GALLERY IMAGE SWITCHER
+// ==========================================
+// Left in global scope so HTML onclick="changeImage(this)" can find it
 function changeImage(thumbnail) {
-    // Update main photo src to match clicked thumbnail
-    document.getElementById('mainProductImg').src = thumbnail.src;
-    
-    // Remove 'active' class from all thumbnails
-    const thumbnails = document.querySelectorAll('.thumb-img');
-    thumbnails.forEach(img => img.classList.remove('active'));
-    
-    // Add 'active' class to clicked thumbnail
-    thumbnail.classList.add('active');
+    const mainImg = document.getElementById('mainProductImg');
+    if (mainImg && thumbnail) {
+        mainImg.src = thumbnail.src;
+        const thumbnails = document.querySelectorAll('.thumb-img');
+        thumbnails.forEach(img => img.classList.remove('active'));
+        thumbnail.classList.add('active');
+    }
+}
+
+
+// ==========================================
+// 4. SIGN IN / SIGN UP FORM TOGGLE
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+    const signInSection = document.getElementById('signInSection');
+    const signUpSection = document.getElementById('signUpSection');
+    const switchToSignUp = document.getElementById('switchToSignUp');
+    const switchToSignIn = document.getElementById('switchToSignIn');
+
+    if (switchToSignUp && switchToSignIn && signInSection && signUpSection) {
+        switchToSignUp.addEventListener('click', function (e) {
+            e.preventDefault();
+            signInSection.classList.add('d-none');
+            signUpSection.classList.remove('d-none');
+        });
+
+        switchToSignIn.addEventListener('click', function (e) {
+            e.preventDefault();
+            signUpSection.classList.add('d-none');
+            signInSection.classList.remove('d-none');
+        });
+    }
+});
+
+
+// ==========================================
+// 5. SHOW / HIDE PASSWORD TOGGLE
+// ==========================================
+// Left in global scope so HTML onclick="togglePasswordVisibility(...)" can find it
+function togglePasswordVisibility(inputId, iconContainer) {
+    const passwordInput = document.getElementById(inputId);
+    if (passwordInput && iconContainer) {
+        const icon = iconContainer.querySelector('i');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            if (icon) icon.classList.replace('bi-eye', 'bi-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            if (icon) icon.classList.replace('bi-eye-slash', 'bi-eye');
+        }
+    }
 }

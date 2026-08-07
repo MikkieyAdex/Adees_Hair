@@ -41,6 +41,53 @@ body {
     color: #d8b4fe;
 }
 
+/* --- SEARCH OVERLAY STYLES --- */
+.search-overlay {
+    position: fixed;
+    top: -120px; /* Hidden off the top of the screen by default */
+    left: 0;
+    width: 100%;
+    background-color: var(--bs-body-bg); /* Adapts to both Light & Dark themes */
+    z-index: 1060; /* Positions above navbar */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth sliding animation */
+}
+
+/* Active Class: Slides search bar down */
+.search-overlay.active {
+    top: 0;
+}
+
+/* Search input border styling */
+.search-input-group {
+    border: 1px solid var(--bs-border-color);
+    border-radius: 4px;
+    background-color: var(--bs-body-bg);
+}
+
+.search-input-group input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Screen Dimmer / Backdrop */
+.search-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dims background */
+    backdrop-filter: blur(2px);            /* Soft blur effect */
+    z-index: 1050;                         /* Sits directly behind search overlay */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+/* Active Backdrop state */
+.search-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* --- NAVBAR & LOGO STYLING --- */
 .navbar-brand img {
     max-height: 65px; /* Adjust height based on your logo design */
@@ -60,10 +107,41 @@ body {
 /* --- HOVER DROPDOWNS (DESKTOP ONLY) --- */
 /* Only enable hover menus on large screens (min-width: 992px) to prevent mobile touch glitches */
 @media (min-width: 992px) {
+    /* 1. Ensure the parent navbar item acts as the positioning reference */
     .navbar .nav-item.dropdown:hover > .dropdown-menu {
         display: block;
         margin-top: 0; /* Remove gap so mouse transition is seamless */
         animation: fadeIn 0.2s ease-in-out;
+    }
+    .navbar .nav-item.dropdown {
+        position: static !important; /* Allows menu to center relative to the navbar container */
+    }
+
+    /* 2. Expand width, center the menu box, and add spacing */
+    .navbar .dropdown-menu {
+        width: 85vw !important;             /* Sets width to 85% of the viewport width */
+        max-width: 1100px !important;       /* Caps max width so it doesn't get ridiculously large on ultra-wide screens */
+        left: 50% !important;               /* Moves left edge to screen midpoint */
+        transform: translateX(-50%) !important; /* Pulls menu back by half its width to make it perfectly centered */
+        padding: 2.5rem 3rem !important;    /* Generous whitespace inside: top/bottom and left/right */
+    }
+    .navbar .dropdown-menu-help {
+        width: 300px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        padding: 1rem 3rem !important;
+    }
+
+    /* 3. Text Alignment & Removing Unwanted Indentations */
+    .dropdown-menu .dropdown-header {
+        padding-left: 0 !important;         /* Flush header to the left border */
+        text-align: left !important;
+    }
+
+    .dropdown-menu .dropdown-item {
+        padding-left: 0 !important;         /* Strips Bootstrap's default item inset padding */
+        padding-right: 0 !important;
+        text-align: left !important;        /* Aligns all list items directly under the header */
     }
 }
 
@@ -159,4 +237,9 @@ body {
 .brand-logo:hover {
     filter: grayscale(0%);
     opacity: 1;
+}
+
+.quick-links:hover {
+    color: var(--adees-purple) !important;
+    text-decoration: underline;
 }

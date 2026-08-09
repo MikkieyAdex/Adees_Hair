@@ -12,6 +12,41 @@
 </head>
 <body>
     
+    <style>
+        /* --- COLLECTION CARD STYLING --- */
+        .collection-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .collection-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1 / 1; /* Keeps images perfectly square */
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .collection-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Smooth zoom effect on hover */
+        .collection-card:hover .collection-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* Subtle text color shift on hover */
+        .collection-card:hover .collection-title {
+            color: var(--adees-purple, #8A2BE2) !important;
+        }
+    </style>
+
     
     <div id="searchOverlay" class="search-overlay">
         <div class="container py-3">
@@ -70,7 +105,9 @@
                             <div class="row g-4">
                                 
                                 <div class="col-md-4">
-                                    <h6 class="dropdown-header text-uppercase fw-bold text-dark mb-2">Products</h6>
+                                    <h6 class="dropdown-header text-uppercase fw-bold ps-0 mb-2">
+                                        <a href="collections.html" class="text-decoration-none text-body d-block">Products</a>
+                                    </h6>
                                     <ul class="list-unstyled mb-0">
                                         <li><a class="dropdown-item" href="raw-bundles.html">Raw Bundles</a></li>
                                         <li><a class="dropdown-item" href="frontals-closures.html">Frontals & Closures</a></li>
@@ -81,7 +118,9 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <h6 class="dropdown-header text-uppercase fw-bold text-dark mb-2">Texture</h6>
+                                    <a href="collections.html" class="d-block text-uppercase fw-bold text-body text-decoration-none mb-2">
+                                        Texture
+                                    </a>
                                     <ul class="list-unstyled mb-0">
                                         <li><a class="dropdown-item" href="#">Silky Straight</a></li>
                                         <li><a class="dropdown-item" href="#">Body Wave</a></li>
@@ -91,12 +130,11 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <h6 class="dropdown-header text-uppercase fw-bold text-dark mb-2">Lace Size</h6>
+                                    <a href="collections.html" class="d-block text-uppercase fw-bold text-body text-decoration-none mb-2">
+                                        Lace Sizes
+                                    </a>
                                     <ul class="list-unstyled mb-0">
-                                        <li><a class="dropdown-item" href="#">2x6 Closures</a></li>
-                                        <li><a class="dropdown-item" href="#">4x4 Closures</a></li>
-                                        <li><a class="dropdown-item" href="#">5x5 Closures</a></li>
-                                        <li><a class="dropdown-item" href="#">6x6 Closures</a></li>
+                                        <li><a class="dropdown-item" href="#">Closures</a></li>
                                         <li><a class="dropdown-item" href="#">Full Lace</a></li>
                                         <li><a class="dropdown-item" href="#">Headband</a></li>
                                         <li><a class="dropdown-item" href="#">Half Wig</a></li>
@@ -144,7 +182,63 @@
     </nav>
 
     
+<section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <h1 class="text-uppercase fw-bold display-6">Styling Tools & Wax</h1>
+                    <div style="width: 60px; height: 3px; background: var(--adees-purple, #8A2BE2);" class="mx-auto mt-2 mb-3"></div>
+                    <p class="text-muted small">Enhance your styling routine with our premium selection of tools and wax.</p>
+                </div>
+            </div>
 
+            <div class="row g-3 g-md-4">
+                
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="product.html" class="collection-card">
+                        <div class="collection-img-wrapper mb-2 shadow-sm">
+                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
+                        </div>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">1B Raw Bundles</p>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦150,000</p>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="product.html" class="collection-card">
+                        <div class="collection-img-wrapper mb-2 shadow-sm">
+                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
+                        </div>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">1B Raw (Double Drawn) Bundles</p>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦500,000</p>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="product.html" class="collection-card">
+                        <div class="collection-img-wrapper mb-2 shadow-sm">
+                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
+                        </div>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">613 Virgin Bundles</p>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦190,000</p>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="product.html" class="collection-card">
+                        <div class="collection-img-wrapper mb-2 shadow-sm">
+                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
+                        </div>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">613 Virgin (Double Drawn) Bundles</p>
+                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦650,000</p>
+                    </a>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </section>
 
 
 

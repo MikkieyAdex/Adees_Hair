@@ -11,41 +11,6 @@
 
 </head>
 <body>
-    
-    <style>
-        /* --- COLLECTION CARD STYLING --- */
-        .collection-card {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease;
-        }
-
-        .collection-img-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 1 / 1; /* Keeps images perfectly square */
-            background-color: rgba(0,0,0,0.03);
-        }
-
-        .collection-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        /* Smooth zoom effect on hover */
-        .collection-card:hover .collection-img-wrapper img {
-            transform: scale(1.08);
-        }
-
-        /* Subtle text color shift on hover */
-        .collection-card:hover .collection-title {
-            color: var(--adees-purple, #8A2BE2) !important;
-        }
-    </style>
 
     
     <div id="searchOverlay" class="search-overlay">
@@ -182,64 +147,40 @@
     </nav>
 
 
-    <section class="py-5">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-12 text-center">
-                    <h1 class="text-uppercase fw-bold display-6">Ready-to-Ship Wigs</h1>
-                    <div style="width: 60px; height: 3px; background: var(--adees-purple, #8A2BE2);" class="mx-auto mt-2 mb-3"></div>
-                    <p class="text-muted small">Discover our premium selection of ready-to-ship wigs, perfect for achieving a natural, luxurious look.</p>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-4">Choosing a Length</h1>
+        <p class="lead text-center mb-5">Selecting the right hair length is crucial for achieving your desired look. Here’s a guide to help you make the best choice.</p>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="img/length-guide.jpg" class="card-img-top" alt="Hair Length Guide">
+                    <div class="card-body">
+                        <h5 class="card-title">Understanding Hair Lengths</h5>
+                        <p class="card-text">Hair lengths are typically measured in inches, starting from the crown of the head down to the ends. Common lengths range from 8 inches to 30 inches or more.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="row g-3 g-md-4">
-                
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="product.html" class="collection-card">
-                        <div class="collection-img-wrapper mb-2 shadow-sm">
-                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
-                        </div>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">1B Raw Bundles</p>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦150,000</p>
-                    </a>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="img/length-chart.jpg" class="card-img-top" alt="Hair Length Chart">
+                    <div class="card-body">
+                        <h5 class="card-title">Length Chart</h5>
+                        <p class="card-text">Use our length chart to visualize how different lengths will look on you. Shorter lengths offer a natural look, while longer lengths provide dramatic volume and style options.</p>
+                    </div>
                 </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="product.html" class="collection-card">
-                        <div class="collection-img-wrapper mb-2 shadow-sm">
-                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
-                        </div>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">1B Raw (Double Drawn) Bundles</p>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦500,000</p>
-                    </a>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="product.html" class="collection-card">
-                        <div class="collection-img-wrapper mb-2 shadow-sm">
-                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
-                        </div>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">613 Virgin Bundles</p>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦190,000</p>
-                    </a>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="product.html" class="collection-card">
-                        <div class="collection-img-wrapper mb-2 shadow-sm">
-                            <img src="img/tape-ins.webp" alt="Tape-Ins & Clip-Ins">
-                        </div>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">613 Virgin (Double Drawn) Bundles</p>
-                        <p class="text-center fw-semibold text-body collection-title mb-0">From ₦650,000</p>
-                    </a>
-                </div>
-
-                
-
             </div>
         </div>
-    </section>
 
+        <section class="mt-5">
+            <h2>Tips for Choosing the Right Length</h2>
+            <ul>
+                <li>Consider your lifestyle and maintenance preferences.</li>
+                <li>Think about the styles you want to achieve.</li>
+                <li>Consult with a stylist if you're unsure about what length suits you best.</li>
+            </ul>
+        </section>
 
 
 

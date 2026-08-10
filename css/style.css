@@ -272,3 +272,32 @@ footer {
     color: var(--adees-purple) !important;
     text-decoration: underline;
 }
+
+/* --- OFFCANVAS MINI-CART & BLUR BACKDROP --- */
+.offcanvas-cart {
+    width: 420px !important; /* Fixed width drawer for desktop */
+    max-width: 90vw;
+}
+
+/* Backdrop Blur Effect when Mini Cart or Overlay is active */
+.offcanvas-backdrop.show {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cart-item-img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cart-qty-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}

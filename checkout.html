@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adees Hair | Checkout</title>
+    
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body { background-color: var(--bs-body-bg); }
+        .checkout-sidebar { background-color: var(--bs-tertiary-bg); min-height: 100vh; }
+        .express-btn { height: 48px; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-7 p-4 p-md-5">
+                <div class="mx-auto" style="max-width: 600px;">
+                    
+                    <a href="index.html" class="d-block mb-4">
+                        <img src="img/Gemini_Generated_Image_wzt3z2wzt3z2wzt3-removebg-preview.png" alt="Adees Hair Logo" style="max-height: 45px;">
+                    </a>
+
+                    <div class="mb-4">
+                        <p class="text-uppercase small fw-bold text-muted text-center mb-2">Express Checkout</p>
+                        <div class="row g-2">
+                            <div class="col-4">
+                                <button class="btn btn-dark w-100 express-btn fw-bold"><i class="bi bi-apple me-1"></i> Pay</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-warning w-100 express-btn fw-bold text-dark"><i class="bi bi-paypal me-1"></i> PayPal</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-info w-100 express-btn fw-bold text-white"><i class="bi bi-credit-card me-1"></i> G Pay</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <hr class="flex-grow-1">
+                        <span class="px-3 small text-muted text-uppercase">OR</span>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <form>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="fw-bold mb-0">Contact Information</h5>
+                                <a href="login.html" class="small text-decoration-none" style="color: var(--adees-purple, #8A2BE2);">Already have an account? Log in</a>
+                            </div>
+                            <input type="email" class="form-control py-2" placeholder="Email address" required>
+                        </div>
+
+                        <h5 class="fw-bold mb-3">Shipping Address</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <select class="form-select py-2">
+                                    <option selected>Nigeria</option>
+                                    <option>United Kingdom</option>
+                                    <option>United States</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control py-2" placeholder="First name" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control py-2" placeholder="Last name" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control py-2" placeholder="Street Address" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control py-2" placeholder="City" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control py-2" placeholder="Postal Code" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="tel" class="form-control py-2" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-3">Payment</h5>
+                        <div class="card p-3 mb-4 border">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" checked>
+                                <label class="form-check-label fw-semibold" for="payCard">Credit / Debit Card</label>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Card number">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control form-control-sm" placeholder="MM / YY">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control form-control-sm" placeholder="CVV">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 text-uppercase fw-bold py-3" style="background-color: var(--adees-purple, #8A2BE2); border-color: var(--adees-purple, #8A2BE2);">
+                            Complete Order
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-lg-5 checkout-sidebar p-4 p-md-5 border-start">
+                <div class="mx-auto" style="max-width: 480px;">
+                    
+                    <h5 class="fw-bold mb-4">Order Summary (2 Items)</h5>
+
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="position-relative">
+                            <img src="img/raw-bundle.webp" alt="Raw Bundles" class="rounded border" style="width: 64px; height: 64px; object-fit: cover;">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary">1</span>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-0 small text-uppercase">1B Raw Bundles</h6>
+                            <span class="small text-muted">18" / Straight</span>
+                        </div>
+                        <span class="fw-bold small">₦150,000.00</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="position-relative">
+                            <img src="img/wax_stick_img.webp" alt="Wax Stick" class="rounded border" style="width: 64px; height: 64px; object-fit: cover;">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary">1</span>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-0 small text-uppercase">Styling Wax Stick</h6>
+                            <span class="small text-muted">Single Unit</span>
+                        </div>
+                        <span class="fw-bold small">₦18,500.00</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" placeholder="Discount code or promo">
+                        <button class="btn btn-outline-secondary fw-semibold" type="button">Apply</button>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between mb-2 small">
+                        <span class="text-muted">Subtotal</span>
+                        <span class="fw-bold">₦168,500.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 small">
+                        <span class="text-muted">Shipping</span>
+                        <span class="text-muted">Calculated next step</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center fs-5 fw-bold">
+                        <span>Total</span>
+                        <span style="color: var(--adees-purple, #8A2BE2);">₦168,500.00</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
